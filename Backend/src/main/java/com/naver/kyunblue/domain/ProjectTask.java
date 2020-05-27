@@ -31,9 +31,9 @@ public class ProjectTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(updatable = false)
+	@Column(updatable = false, unique = true)
 	private String projectSequence;
-	@NotBlank(message = "Please include a project name")
+	@NotBlank(message = "프로젝트 요약을 입력해주세요.")
 	private String summary;
 	private String acceptanceCriteria;
 	private String status;

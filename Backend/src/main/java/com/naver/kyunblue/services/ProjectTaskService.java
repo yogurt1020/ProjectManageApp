@@ -57,4 +57,31 @@ public class ProjectTaskService {
 		
 		return projectTaskRepository.findByProjectIdentifierOrderByPriority(projectIdentifier);
 	}
+	
+	public ProjectTask findPTByProjectSequence(String projectIdentifier, String sequence) {
+		// 프로젝트 존재여부
+		Project project = projectRepository.findByProjectIdentifier(projectIdentifier);
+		if(project == null) {
+			throw new ProjectNotFoundException("Project with ID [" + projectIdentifier + "] is not found");
+		}
+		// 프로젝트 태스크 존재 여부
+		ProjectTask projectTask = projectTaskRepository.findByProjectSequence(sequence);
+		if(projectTask == null) {
+			throw new ProjectNotFoundException("Project Task [" + sequence + "] is not found");
+		}
+		// 해당 프로젝트 하위에 이 태스크가 존재하는지
+		if(!projectTask.getProjectIdentifier().equals(projectIdentifier)) {
+			throw new ProjectNotFoundException("Project Task [" + sequence + "] is not found in project [" + projectIdentifier + "]");
+		}
+		
+		return projectTask;
+	}
+	
+	public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String projectIdentifier, String sequence) {
+//		ProjectTask projectTask = projectTaskRepository.findByProjectSequence(sequence);
+//		
+//		projectTask = updatedTask;
+		
+		return projectTaskRepository.save(updatedTask);
+	}
 }
