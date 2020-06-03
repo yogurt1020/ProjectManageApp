@@ -14,11 +14,11 @@ class AddProject extends Component {
     errors: {},
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.errors) {
+  //     this.setState({ errors: nextProps.errors });
+  //   }
+  // }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -39,7 +39,8 @@ class AddProject extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    // const { errors } = this.state;
+    const { errors } = this.props;
     console.log(errors);
     return (
       <div className="project">
