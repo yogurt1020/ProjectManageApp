@@ -2,6 +2,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,java,java-web,node,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,java-web,node,eclipse
 
+Backend/src/main/resources/application.properties
+
 ### Eclipse ###
 .metadata
 bin/
