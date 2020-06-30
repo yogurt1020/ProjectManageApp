@@ -35,6 +35,6 @@ public class BackLog {
 	@JsonIgnore	// json 형태로 리턴시 무한루프 방지
 	private Project project;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="backlog")
+	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy="backlog", orphanRemoval = true)
 	private List<ProjectTask> projectTasks = new ArrayList<>();
 }
